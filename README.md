@@ -8,7 +8,7 @@
 ## Usage
 
 ## Contributors
-<firstname> <lastname> - <email>
+<claire> <dupuich> - <clairedupuich9@gmail.com>
 
 ## Licence
 
