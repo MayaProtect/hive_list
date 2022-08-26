@@ -30,9 +30,10 @@ def page_query(query_filter=None, page_size=200, page_on=1):
     
     for r in page_record:
         print(r)
-        
-# if __name__ == "__main__":
-     
+
+
+if __name__ == "__main__":
+     pass
 
 
 
