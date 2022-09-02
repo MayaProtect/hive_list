@@ -1,39 +1,46 @@
-#!/usr/bin/python3
+
  
 import pymongo
-from pymongo import MongoClient
+import flask
+import json
+from flask_cors import CORS, cross_origin
+import os
+
+
+app = flask.Flask(__name__)
+CORS(app)
+app.config["DEBUG"] = True
+
+# pour apres le function get_collection
+
 
 
 def get_collection():
-    # client = MongoClient()
-    my_client = pymongo.MongoClient('mongodb://localhost:27017/')
+    my_client = pymongo.MongoClient('mongodb://' + os.environ["MONGO_HOST"] + ':' + os.environ["MONGO_PORT"] + '/')
     db = my_client.list_database_names()
-    if "runoobdb" in db:
-        print("database already exist !")
-  
-    # collection = db.python_collection
     hives = db.hives
     return hives
 
 
-def check_exist(coll, data):
-    query_filter = {'name': data['name']}
-    cnt = coll.find(query_filter).count()
-    return cnt > 0
-
-
+@app.route('/hives', methods=['GET'])  
+@cross_origin() 
 # 打印所有蜂巢信息
-def page_query(query_filter=None, page_size=200, page_on=1):
+def page_query():
+    args = flask.request.args
+    page_size = args.get("limit")
+    page_on = args.get("page")
     skip = page_size * (page_on - 1)
     coll = get_collection()
-    page_record = coll.find(query_filter).limit(page_size).skip(skip)
+    page_record = coll.find().limit(page_size).skip(skip)
     
-    for r in page_record:
-        print(r)
+    return flask.Response(json.dumps(page_record), mimetype='application/json')
 
 
-if __name__ == "__main__":
-     pass
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8080)
+
+
 
 
 
