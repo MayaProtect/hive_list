@@ -1,5 +1,3 @@
-
- 
 import pymongo
 import flask
 import json
@@ -18,8 +16,8 @@ app.config["DEBUG"] = True
 
 
 def get_collection():
-    # my_client = pymongo.MongoClient('mongodb://' + env.get('MONGO_HOST') + ':' + env.get('MONGO_PORT') + '/')
-    my_client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
+    my_client = pymongo.MongoClient('mongodb://' + env.get('MONGO_HOST') + ':' + env.get('MONGO_PORT') + '/')
+    # my_client = pymongo.MongoClient('mongodb://127.0.0.1:27017/')
     db = my_client['mayaprotect']
     hives = db['hives']
     return hives
@@ -35,7 +33,7 @@ def page_query():
     skip = page_size * (page_on - 1)
     coll = get_collection()
     
-   # myquery_list = ["{"station_uuid":UUID()  }", "{'owner.uuid': UUID()}","{"station_uuid":UUID() and 'owner.uuid': UUID()  }"]
+   
     dict_filtre = {}
     if args.get("station_id") is not None:
         dict_filtre['station_uuid'] = bson.Binary.from_uuid(UUID(args.get('station_id')))
