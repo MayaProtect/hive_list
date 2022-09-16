@@ -23,7 +23,7 @@ def get_collection():
     return hives
 
 
-@app.route('/hives', methods=['GET'])  
+@app.route('/hives', methods=['GET'])    
 @cross_origin() 
 # 打印所有蜂巢信息
 def page_query():
