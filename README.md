@@ -1,20 +1,21 @@
-# MayaProtect - Microservice <INSERT NAME>
+# MayaProtect - Microservice hive_list
 
 <Microservice description>
-<Last build info>
+Administrators must be able to access the list of all hives
 
 ## How to build
-
+use Python, pymongo
 ## Usage
+Used to read the contents of the hive
 
 ## Contributors
-<firstname> <lastname> - <email>
+claire dupuich - clairedupuich9@gmail.com
 
 ## Licence
 
 ```plaintext
-<Microservice's Name>
-Copyright (C) 2022  <name of author>
+Microservice hive_list
+Copyright (C) 2022  claire
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
