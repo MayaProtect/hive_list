@@ -1,21 +1,28 @@
-# MayaProtect - Microservice hive_list
+# MayaProtect - Microservice GetHivesList
 
-<Microservice description>
-Administrators must be able to access the list of all hives
+Microservice GetHivesList is a part of MayaProtect project. It is a microservice that provides a list of hives from the database.
 
-## How to build
-use Python, pymongo
-## Usage
-Used to read the contents of the hive
+## Requirements
+
+- Mongo 6.0
+- Python 3.10
+
+## How to use
+
+`pip install -r requirements.txt`
+
+`python3 run.py`
 
 ## Contributors
-claire dupuich - clairedupuich9@gmail.com
+
+- Claire Dupuich - clairedupuich9@gmail.com
+- Peter Fontaine - contact@peterfontaine.fr
 
 ## Licence
 
 ```plaintext
-Microservice hive_list
-Copyright (C) 2022  claire
+Microservice GetHivesList
+Copyright (C) 2022 Claire Dupuich, Peter Fontaine
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
