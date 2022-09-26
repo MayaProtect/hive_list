@@ -42,7 +42,10 @@ class ResponseCreator:
         self.response = response
         self.hives = []
         for hive in response:
-            self.hives.append(Hive(hive))
+            try:
+                self.hives.append(Hive(hive))
+            except Exception as e:
+                print(e)
 
     def create_response(self) -> dict:
         """
