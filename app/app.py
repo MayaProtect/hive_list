@@ -53,9 +53,9 @@ class GetHivesList:
         :return: Filters for MongoDB
         """
         dict_filtre = {}
-        if args.get("station_id") is not None:
+        if args.get("station") is not None:
             dict_filtre['station_uuid'] = bson.Binary.from_uuid(UUID(args.get('station_id')))
-        if args.get("owner_id") is not None:
+        if args.get("owner") is not None:
             dict_filtre['owner.uuid'] = bson.Binary.from_uuid(UUID(args.get('owner_id')))
         return dict_filtre
 
