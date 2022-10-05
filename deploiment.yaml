@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  selector:
+    matchLabels:
+      app: get-hives  
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: get-hives  # 定义标签 之后的service要用
+
+    spec:
+       containers:
+         - name: get-hives 
+           image: pfontaine/gethiveslist:latest
+           resources:  
+            requests:    
+                cpu: 100m
+                memory: 50Mi
+            limits:    
+                cpu: 300m
+                memory: 500Mi
+           ports:
+            - containerPort: 80
+        
+          
