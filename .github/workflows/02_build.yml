@@ -41,5 +41,5 @@ jobs:
       with:
         push: true
         tags: |
-          ${{ secrets.DOCKER_USER }}/${{ steps.downcase-repo-name.outputs.lowercase }}:latest
-          ${{ secrets.DOCKER_USER }}/${{ steps.downcase-repo-name.outputs.lowercase }}:${{ github.sha }}
+          ${{ secrets.DOCKER_HUB_USER }}/${{ steps.downcase-repo-name.outputs.lowercase }}:latest
+          ${{ secrets.DOCKER_HUB_USER }}/${{ steps.downcase-repo-name.outputs.lowercase }}:${{ github.sha }}
