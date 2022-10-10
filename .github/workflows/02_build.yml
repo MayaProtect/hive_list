@@ -11,6 +11,9 @@ jobs:
     
     name: Build Image
     runs-on: ubuntu-latest
+    env:
+      DOCKER_HUB_USER: ${{ secrets.DOCKER_HUB_USER }}
+      DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
    
     steps:
@@ -27,8 +30,8 @@ jobs:
     - name: Docker login
       uses: docker/login-action@v2
       with:
-        username: ${{ secrets.DOCKER_HUB_USER }}
-        password: ${{ secrets.DOCKER_HUB_ACCES_TOKEN }}
+        username: $DOCKER_HUB_USER
+        password: $DOCKER_HUB_ACCESS_TOKEN
 
     - name: Downcase repo name
       id: downcase-repo-name
@@ -41,5 +44,5 @@ jobs:
       with:
         push: true
         tags: |
-          ${{ secrets.DOCKER_HUB_USER }}/${{ steps.downcase-repo-name.outputs.lowercase }}:latest
-          ${{ secrets.DOCKER_HUB_USER }}/${{ steps.downcase-repo-name.outputs.lowercase }}:${{ github.sha }}
+          $DOCKER_HUB_USER/${{ steps.downcase-repo-name.outputs.lowercase }}:latest
+          $DOCKER_HUB_USER/${{ steps.downcase-repo-name.outputs.lowercase }}:${{ github.sha }}
