@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gethiveslist
+  namespace: development
+spec:
+  selector:
+    matchLabels:
+      app: gethiveslist
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gethiveslist
+    spec:
+      containers:
+        - name: gethiveslist
+          image: pfontaine/gethiveslist:{{ commit_sha }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gethiveslist-service
+  namespace: development
+spec:
+  selector:
+    app: gethiveslist
+  ports:
+  - port: 8080
+    targetPort: 8080
+  type: ClusterIP
